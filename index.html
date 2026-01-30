@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at bottom, #0b0f2a, #000010);
+  overflow:hidden;
+  color:#ff8fbf;
+}
+
+/* 🌟 STARS */
+.stars{position:fixed;inset:0;z-index:0}
+.star{
+  position:absolute;
+  bottom:-10px;
+  width:2px;height:2px;
+  background:white;border-radius:50%;
+  opacity:.6;
+  animation:starMove linear infinite,starTwinkle 3s ease-in-out infinite;
+}
+@keyframes starMove{to{transform:translateY(-120vh)}}
+@keyframes starTwinkle{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* 💬 MESSAGE BUBBLE PAGE */
+.page{
+  position:relative;
+  z-index:2;
+  display:none;
+  width:90%;
+  max-width:420px;
+  padding:55px 30px 40px;
+  text-align:center;
+  background: url("https://i.ibb.co/232qHrKJ/file-00000000fa6071fa99b4ab4fa7ee326f.png")
+              no-repeat center/100% 100%;
+  animation:fade .6s ease;
+}
+
+.page.active{display:block}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* ✍️ TEXT STYLE */
+h1,h2,p{
+  color:#ff8fbf;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.9),
+    0 0 10px rgba(255,120,180,.4);
+}
+
+.circle{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #ff8fbf;
+  margin-bottom:10px;
+}
+
+img.ring{width:160px}
+
+/* 🔘 BUTTON */
+button{
+  margin-top:15px;
+  padding:10px 26px;
+  border:none;
+  border-radius:30px;
+  background:#ff2f7d;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.6);
+}
+
+/* 💝 HEARTS (slow) */
+.heart{
+  position:fixed;
+  bottom:-30px;
+  font-size:22px;
+  animation:heartFloat 8s linear forwards;
+  pointer-events:none;
+  z-index:1;
+}
+@keyframes heartFloat{
+  to{transform:translateY(-120vh) scale(1.4);opacity:0}
+}
+
+/* 💍 RINGS */
+.ring-float{
+  position:fixed;
+  bottom:-50px;
+  width:40px;
+  animation:ringUp 4s linear infinite;
+}
+@keyframes ringUp{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* 🎉 CONGRATS */
+.congrats-box{
+  position:fixed;inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  animation:pop 2s ease forwards;
+  z-index:999;
+}
+.congrats-box h1{font-size:38px;margin:0}
+.congrats-box .emojis{font-size:34px;margin-top:8px}
+@keyframes pop{
+  from{opacity:0;transform:scale(.8)}
+  to{opacity:1;transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- OPEN -->
+<div class="page active">
+  <h2>💌</h2>
+  <p>Tap to open 👐</p>
+  <button onclick="start()">OPEN ❤️</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <img class="circle" src="https://i.ibb.co/tM4jTf0R/IMG-20251208-115254-857.jpg">
+  <h2>My Love 💖</h2>
+  <p>Happy valentine's day 🫂 💝</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <p>I Just write something for you by my heart 🫀</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <p>
+    I want to tell you that, when I saw you first time on call 🥹 you look gorgeous.i dont know waht happen to me, 
+    I really fall in love with you 😊.
+    and I suddenly started to like you 💘. Because I want a bueatyfull Gf like you 😆 I don't know I am heandsome or not 😆😆 Forget it .......
+    But sometimes I think if I lost you, I don’t know what to do 🥺 maybe i dont choose anyone as my future life partner 🥺
+    Because you are everything for me and my heart never allows me to leave you 😭🥲.
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <p>
+    I really love you 😩🫶.
+    I promise I am loyal to you and I will never break your trust 🤝. I know it difficult to choose any person as a life partner but 
+    i promise i never break my promise in any way because my parents not teach me to hurt anyone or to do anything wrong with anyone 
+    someone 😑. I dont know but I am not like other guys.I am loyal to you.
+    If you become my future wife,
+    I will give you everything of my life 🫀.
+    I just want to ask you one thing…
+  </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <img class="ring" src="https://img.sanishtech.com/u/2784720bea3995b12e670d1913612c2d.png">
+  <h2>WILL YOU MARRY ME IN FUTURE and become my Future wife TRANG 🌹💍</h2>
+  <button onclick="yes()">YES 💖</button>
+  <button onclick="no()">NO 😅</button>
+  <p id="result"></p>
+</div>
+
+<script>
+/* 🌟 STARS */
+const stars=document.getElementById("stars");
+for(let i=0;i<60;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=20+Math.random()*20+"s";
+  stars.appendChild(s);
+}
+
+let pages=document.querySelectorAll('.page');
+let current=0;
+
+function start(){
+  pages[0].classList.remove('active');
+  current=1;
+  pages[current].classList.add('active');
+  startHearts();
+}
+function next(){
+  pages[current].classList.remove('active');
+  current++;
+  pages[current].classList.add('active');
+}
+function yes(){
+  let box=document.createElement("div");
+  box.className="congrats-box";
+  box.innerHTML=`<h1>Congratulations🌹💞</h1><div class="emojis">🫂💝🥹</div>`;
+  document.body.appendChild(box);
+}
+function no(){
+  document.getElementById("result").innerText="wrong option click on yes 😆";
+}
+function startHearts(){
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💝";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),10000);
+  },900);
+}
+</script>
+
+</body>
+</html>
